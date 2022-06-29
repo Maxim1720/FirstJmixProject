@@ -8,6 +8,7 @@
                     class="com.company.firstjmixproject.entity.Bill">
             <fetchPlan extends="_base">
                 <property name="currency" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="billsDl">
                 <query>
@@ -49,6 +50,7 @@
                 <column id="currency"/>
                 <column id="funds"/>
                 <column id="name"/>
+                <column id="owner"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

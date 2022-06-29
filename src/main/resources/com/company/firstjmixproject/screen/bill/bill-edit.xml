@@ -7,6 +7,7 @@
                   class="com.company.firstjmixproject.entity.Bill">
             <fetchPlan extends="_base">
                 <property name="currency" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
         </instance>
@@ -37,6 +38,12 @@
                 </entityPicker>
                 <textField id="fundsField" property="funds"/>
                 <textField id="nameField" property="name"/>
+                <entityPicker id="ownerField" property="owner">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
