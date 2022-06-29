@@ -1,8 +1,10 @@
 package com.company.firstjmixproject.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -10,6 +12,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
@@ -59,14 +62,19 @@ public class Operation {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @JoinColumn(name = "BILL_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JoinColumn(name = "BILL_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Bill bill;
 
-    @JoinColumn(name = "TYPE_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @NotNull
+    @JoinColumn(name = "TYPE_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private OperationType type;
 
+    @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "CATEGORY_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private OperationCategory category;
