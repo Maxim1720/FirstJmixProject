@@ -21,7 +21,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "IDID_BILL", indexes = {
-        @Index(name = "IDX_BILL_CURRENCY_ID", columnList = "CURRENCY_ID")
+        @Index(name = "IDX_BILL_CURRENCY_ID", columnList = "CURRENCY_ID"),
+        @Index(name = "IDX_BILL_OWNER_ID", columnList = "OWNER_ID", unique = true)
 })
 @Entity(name = "idid_Bill")
 public class Bill {
@@ -75,6 +76,19 @@ public class Bill {
     @Column(name = "DELETED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+
+    @OnDelete(DeletePolicy.CASCADE)
+    @JoinColumn(name = "OWNER_ID", nullable = false, unique = true)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    private User owner;
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 
     public String getName() {
         return name;
