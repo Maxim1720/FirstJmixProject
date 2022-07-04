@@ -52,8 +52,8 @@
                 <column id="type"/>
                 <column id="category"/>
                 <column id="sum"/>
-                <column id="date"/>
                 <column id="comment"/>
+                <column id="createdDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
