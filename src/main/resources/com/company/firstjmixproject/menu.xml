@@ -7,8 +7,6 @@
         <item screen="idid_BillCurrency.browse"
               caption="msg://com.company.firstjmixproject.screen.billcurrency/billCurrencyBrowse.menu"/>
         <item screen="idid_Bill.browse" caption="msg://com.company.firstjmixproject.screen.bill/billBrowse.menu"/>
-        <item screen="idid_OperationType.browse"
-              caption="msg://com.company.firstjmixproject.screen.operationtype/operationTypeBrowse.menu"/>
         <item screen="idid_OperationCategory.browse"
               caption="msg://com.company.firstjmixproject.screen.operationcategory/operationCategoryBrowse.menu"/>
         <item screen="idid_Operation.browse"
