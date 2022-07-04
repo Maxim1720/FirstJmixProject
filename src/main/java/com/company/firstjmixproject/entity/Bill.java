@@ -77,9 +77,8 @@ public class Bill {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @OnDelete(DeletePolicy.CASCADE)
-    @JoinColumn(name = "OWNER_ID", nullable = false, unique = true)
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "OWNER_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User owner;
 
     public User getOwner() {
