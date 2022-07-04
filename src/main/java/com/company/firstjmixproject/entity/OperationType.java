@@ -1,132 +1,32 @@
 package com.company.firstjmixproject.entity;
 
-import io.jmix.core.annotation.DeletedBy;
-import io.jmix.core.annotation.DeletedDate;
-import io.jmix.core.entity.annotation.JmixGeneratedValue;
-import io.jmix.core.metamodel.annotation.InstanceName;
-import io.jmix.core.metamodel.annotation.JmixEntity;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
+import io.jmix.core.metamodel.datatype.impl.EnumClass;
+import io.micrometer.core.lang.NonNullApi;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-@JmixEntity
-@Table(name = "IDID_OPERATION_TYPE")
-@Entity(name = "idid_OperationType")
-public class OperationType {
-    @JmixGeneratedValue
-    @Column(name = "ID", nullable = false)
-    @Id
-    private UUID id;
 
-    @Column(name = "VERSION", nullable = false)
-    @Version
-    private Integer version;
+public enum OperationType implements EnumClass<String> {
 
-    @CreatedBy
-    @Column(name = "CREATED_BY")
-    private String createdBy;
+    ENROLLMENT("enrollment"),
+    WITHDRAWAL("withdrawal");
 
-    @CreatedDate
-    @Column(name = "CREATED_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private String id;
 
-    @LastModifiedBy
-    @Column(name = "LAST_MODIFIED_BY")
-    private String lastModifiedBy;
-
-    @LastModifiedDate
-    @Column(name = "LAST_MODIFIED_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
-
-    @DeletedBy
-    @Column(name = "DELETED_BY")
-    private String deletedBy;
-
-    @DeletedDate
-    @Column(name = "DELETED_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedDate;
-
-    @InstanceName
-    @Column(name = "NAME", length = 50)
-    private String name;
-
-    public String getName() {
-        return name;
+    OperationType(String value) {
+        this.id = value;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDeletedDate() {
-        return deletedDate;
-    }
-
-    public void setDeletedDate(Date deletedDate) {
-        this.deletedDate = deletedDate;
-    }
-
-    public String getDeletedBy() {
-        return deletedBy;
-    }
-
-    public void setDeletedBy(String deletedBy) {
-        this.deletedBy = deletedBy;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    @Nullable
+    public static OperationType fromId(String id) {
+        for (OperationType at : OperationType.values()) {
+            if (at.getId().equals(id)) {
+                return at;
+            }
+        }
+        return null;
     }
 }
