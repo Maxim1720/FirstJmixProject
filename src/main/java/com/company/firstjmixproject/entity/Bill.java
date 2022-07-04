@@ -40,7 +40,7 @@ public class Bill {
     @Positive
     @NotNull
     @Column(name = "FUNDS", nullable = false, precision = 19, scale = 2)
-    private BigDecimal funds;
+    private BigDecimal funds = BigDecimal.valueOf(0);
 
     @NotNull
     @JoinColumn(name = "CURRENCY_ID", nullable = false)
