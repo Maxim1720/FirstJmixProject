@@ -11,6 +11,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
@@ -54,6 +55,7 @@ public class OperationCategory {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
+    @NotNull
     @InstanceName
     @Column(name = "NAME", length = 50)
     private String name;
