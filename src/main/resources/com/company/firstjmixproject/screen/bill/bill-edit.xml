@@ -36,7 +36,6 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <textField id="fundsField" property="funds"/>
                 <textField id="nameField" property="name"/>
                 <entityPicker id="ownerField" property="owner">
                     <actions>
