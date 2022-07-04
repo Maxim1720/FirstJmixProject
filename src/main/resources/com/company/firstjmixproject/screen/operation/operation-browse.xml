@@ -8,7 +8,6 @@
                     class="com.company.firstjmixproject.entity.Operation">
             <fetchPlan extends="_base">
                 <property name="bill" fetchPlan="_base"/>
-                <property name="type" fetchPlan="_base"/>
                 <property name="category" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="operationsDl">
