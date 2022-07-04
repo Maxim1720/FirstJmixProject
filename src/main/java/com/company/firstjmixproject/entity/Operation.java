@@ -63,14 +63,14 @@ public class Operation {
     @NotNull
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "BILL_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.MERGE, optional = false)
     private Bill bill;
 
-    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JmixProperty(mandatory = true)
+    @Column(name = "TYPE_", nullable = false)
     @NotNull
-    @JoinColumn(name = "TYPE_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private OperationType type;
+    private String type;
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "CATEGORY_ID")
