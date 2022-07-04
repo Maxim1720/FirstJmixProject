@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="idid">
+        <addNotNullConstraint columnDataType="UUID" columnName="BILL_ID" tableName="IDID_OPERATION" validate="true"/>
+    </changeSet>
+    <changeSet id="2" author="idid">
+        <addNotNullConstraint columnDataType="UUID" columnName="CURRENCY_ID" tableName="IDID_BILL" validate="true"/>
+    </changeSet>
+    <changeSet id="3" author="idid">
+        <addNotNullConstraint columnDataType="DECIMAL(19, 2)" columnName="FUNDS" tableName="IDID_BILL" validate="true"/>
+    </changeSet>
+    <changeSet id="4" author="idid">
+        <addNotNullConstraint columnDataType="VARCHAR(20)" columnName="NAME" tableName="IDID_BILL" validate="true"/>
+    </changeSet>
+    <changeSet id="5" author="idid">
+        <addNotNullConstraint columnDataType="UUID" columnName="TYPE_ID" tableName="IDID_OPERATION" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

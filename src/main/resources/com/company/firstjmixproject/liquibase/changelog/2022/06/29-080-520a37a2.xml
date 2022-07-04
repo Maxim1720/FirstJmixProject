@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="idid">
+        <createTable tableName="IDID_USER_bill">
+            <column name="bill_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idid_User_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="idid">
+        <addUniqueConstraint columnNames="bill_ID" constraintName="UC_IDID_USER_BILL_BILL" tableName="IDID_USER_bill"/>
+    </changeSet>
+    <changeSet id="3" author="idid">
+        <addForeignKeyConstraint baseColumnNames="bill_ID" baseTableName="IDID_USER_bill"
+                                 constraintName="FK_IDIUSEBIL_ON_BILL" referencedColumnNames="ID"
+                                 referencedTableName="IDID_BILL"/>
+    </changeSet>
+    <changeSet id="4" author="idid">
+        <addForeignKeyConstraint baseColumnNames="idid_User_ID" baseTableName="IDID_USER_bill"
+                                 constraintName="FK_IDIUSEBIL_ON_USER" referencedColumnNames="ID"
+                                 referencedTableName="IDID_USER"/>
+    </changeSet>
+</databaseChangeLog>
