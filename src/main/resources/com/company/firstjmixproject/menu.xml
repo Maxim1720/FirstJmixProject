@@ -11,6 +11,8 @@
               caption="msg://com.company.firstjmixproject.screen.operationcategory/operationCategoryBrowse.menu"/>
         <item screen="idid_Operation.browse"
               caption="msg://com.company.firstjmixproject.screen.operation/operationBrowse.menu"/>
+        <item screen="idid_CategoryGeneralExpensesDto.browse"
+              caption="msg://com.company.firstjmixproject.screen.categorygeneralexpensesdto/categoryGeneralExpensesDtoBrowse.menu"/>
     </menu>
 
 </menu-config>
