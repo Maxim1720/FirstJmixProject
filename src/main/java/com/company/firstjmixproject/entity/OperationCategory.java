@@ -57,7 +57,7 @@ public class OperationCategory {
 
     @NotNull
     @InstanceName
-    @Column(name = "NAME", length = 50)
+    @Column(name = "NAME", nullable = false, unique = true, length = 50)
     private String name;
 
     public String getName() {
