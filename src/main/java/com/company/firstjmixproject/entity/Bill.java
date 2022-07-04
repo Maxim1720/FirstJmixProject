@@ -36,6 +36,7 @@ public class Bill {
     @Column(name = "NAME", nullable = false, length = 20)
     private String name;
 
+    @DecimalMin(message = "{msg://com.company.firstjmixproject.entity/Bill.funds.validation.DecimalMin}", value = "0")
     @Positive
     @NotNull
     @Column(name = "FUNDS", nullable = false, precision = 19, scale = 2)
