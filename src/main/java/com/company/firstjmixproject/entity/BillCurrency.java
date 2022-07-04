@@ -26,7 +26,7 @@ public class BillCurrency {
 
     @NotNull
     @InstanceName
-    @Column(name = "NAME", length = 10)
+    @Column(name = "NAME", nullable = false, unique = true, length = 10)
     private String name;
 
     @Column(name = "VERSION", nullable = false)
