@@ -1,10 +1,8 @@
 package com.company.firstjmixproject.entity;
 
-import io.jmix.core.DeletePolicy;
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
-import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.entity.annotation.SystemLevel;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
@@ -16,6 +14,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
@@ -37,9 +36,8 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "USERNAME", nullable = false)
     protected String username;
 
-    @OnDeleteInverse(DeletePolicy.CASCADE)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "owner")
-    private Bill bill;
+    @OneToMany(mappedBy = "owner")
+    private List<Bill> bill;
 
     @Secret
     @SystemLevel
@@ -65,11 +63,11 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
 
-    public Bill getBill() {
+    public List<Bill> getBill() {
         return bill;
     }
 
-    public void setBill(Bill bill) {
+    public void setBill(List<Bill> bill) {
         this.bill = bill;
     }
 
