@@ -23,6 +23,7 @@ public class BillCurrency {
     @Id
     private UUID id;
 
+    @NotNull
     @InstanceName
     @Column(name = "NAME", length = 10)
     private String name;
