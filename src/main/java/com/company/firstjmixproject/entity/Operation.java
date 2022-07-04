@@ -6,6 +6,7 @@ import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.JmixProperty;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -83,6 +84,22 @@ public class Operation {
     @Column(name = "COMMENT_", length = 150)
     private String comment;
 
+    public void setSum(BigDecimal sum) {
+        this.sum = sum;
+    }
+
+    public void setType(OperationType type) {
+        this.type = type == null ? null : type.getId();
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+
+    public OperationType getType() {
+        return type == null ? null : OperationType.fromId(type);
+    }
+
     public String getComment() {
         return comment;
     }
@@ -95,10 +112,6 @@ public class Operation {
         return sum;
     }
 
-    public void setSum(BigDecimal sum) {
-        this.sum = sum;
-    }
-
     public OperationCategory getCategory() {
         return category;
     }
@@ -107,20 +120,8 @@ public class Operation {
         this.category = category;
     }
 
-    public OperationType getType() {
-        return type;
-    }
-
-    public void setType(OperationType type) {
-        this.type = type;
-    }
-
     public Bill getBill() {
         return bill;
-    }
-
-    public void setBill(Bill bill) {
-        this.bill = bill;
     }
 
     public Date getDeletedDate() {
