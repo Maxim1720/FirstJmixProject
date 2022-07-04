@@ -14,14 +14,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
 @Table(name = "IDID_OPERATION", indexes = {
         @Index(name = "IDX_OPERATION_BILL_ID", columnList = "BILL_ID"),
-        @Index(name = "IDX_OPERATION_TYPE_ID", columnList = "TYPE_ID"),
         @Index(name = "IDX_OPERATION_CATEGORY_ID", columnList = "CATEGORY_ID")
 })
 @Entity(name = "idid_Operation")
@@ -82,9 +80,6 @@ public class Operation {
     @Column(name = "SUM_", precision = 19, scale = 2)
     private BigDecimal sum;
 
-    @Column(name = "DATE_")
-    private LocalDate date;
-
     @Column(name = "COMMENT_", length = 150)
     private String comment;
 
@@ -94,14 +89,6 @@ public class Operation {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 
     public BigDecimal getSum() {
