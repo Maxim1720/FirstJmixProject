@@ -5,7 +5,7 @@
         focusComponent="categoryGeneralExpensesDtoesTable">
     <data readOnly="true">
         <collection id="categoryGeneralExpensesDtoesDc"
-                    class="com.company.firstjmixproject.app.dto.CategoryGeneralExpensesDto"/>
+                    class="com.company.firstjmixproject.app.dto.CategoryExpensesDto"/>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -28,9 +28,8 @@
                     width="100%"
                     dataContainer="categoryGeneralExpensesDtoesDc">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
+                <action id="periodEdit" trackSelection="true" icon="CALENDAR"/>
+                <action id="generalExpenses" icon="font-icon:CIRCLE"/>
             </actions>
             <columns>
                 <column id="category"/>
@@ -39,9 +38,12 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="categoryGeneralExpensesDtoesTable.create"/>
-                <button id="editBtn" action="categoryGeneralExpensesDtoesTable.edit"/>
-                <button id="removeBtn" action="categoryGeneralExpensesDtoesTable.remove"/>
+                <button id="expensesPeriodEditBtn"
+                        action="categoryGeneralExpensesDtoesTable.periodEdit"
+                        caption="траты по периоду"/>
+                <button id="generalExpensesBtn"
+                        action="categoryGeneralExpensesDtoesTable.generalExpenses"
+                        caption="Общие траты"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
