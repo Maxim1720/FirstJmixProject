@@ -68,6 +68,10 @@ public class Operation {
             cascade = CascadeType.MERGE, optional = false)
     private Bill bill;
 
+    @Column(name = "CANCELED", nullable = false, columnDefinition = "boolean default false")
+    @NotNull
+    private Boolean isCanceled = false;
+
     @JmixProperty(mandatory = true)
     @Column(name = "TYPE_", nullable = false)
     @NotNull
@@ -83,6 +87,14 @@ public class Operation {
 
     @Column(name = "COMMENT_", length = 150)
     private String comment;
+
+    public Boolean getIsCanceled() {
+        return isCanceled;
+    }
+
+    public void setIsCanceled(Boolean canceled) {
+        this.isCanceled = canceled;
+    }
 
     public void setSum(BigDecimal sum) {
         this.sum = sum;
