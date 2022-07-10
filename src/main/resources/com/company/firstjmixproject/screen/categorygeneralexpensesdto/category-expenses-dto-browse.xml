@@ -29,7 +29,7 @@
                     dataContainer="categoryGeneralExpensesDtoesDc">
             <actions>
                 <action id="periodEdit" trackSelection="true" icon="CALENDAR"/>
-                <action id="generalExpenses" icon="font-icon:CIRCLE"/>
+                <action id="generalExpenses" icon="font-icon:CIRCLE" trackSelection="true"/>
             </actions>
             <columns>
                 <column id="category"/>
