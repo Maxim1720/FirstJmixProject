@@ -1,7 +1,6 @@
 package com.company.firstjmixproject.screen.categoryexpensesbyperioddto;
 
 import com.company.firstjmixproject.app.service.category.CategoryExpenseService;
-import com.company.firstjmixproject.screen.categorygeneralexpensesdto.CategoryGeneralExpensesDtoBrowse;
 import io.jmix.ui.screen.*;
 import com.company.firstjmixproject.app.dto.CategoryExpensesByPeriodDto;
 import lombok.Getter;
@@ -23,11 +22,5 @@ public class CategoryExpensesByPeriodDtoEdit extends StandardEditor<CategoryExpe
         categoryExpensesByPeriodDto.setExpenses(
                 expenseService.byPeriod(categoryExpensesByPeriodDto)
         );
-    }
-
-    @Subscribe
-    public void onAfterClose(AfterCloseEvent event) {
-//        event.closedWith(StandardOutcome.CLOSE);
-        event.closedWith(StandardOutcome.DISCARD);
     }
 }
