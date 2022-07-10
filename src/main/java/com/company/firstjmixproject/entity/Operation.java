@@ -84,7 +84,9 @@ public class Operation {
     @ManyToOne(fetch = FetchType.LAZY)
     private OperationCategory category;
 
-    @Column(name = "SUM_", precision = 19, scale = 2)
+    @PositiveOrZero(message = "{msg://com.company.firstjmixproject.entity/Operation.sum.validation.PositiveOrZero}")
+    @NotNull
+    @Column(name = "SUM_", nullable = false, precision = 19, scale = 2)
     private BigDecimal sum;
 
     @Column(name = "COMMENT_", length = 150)
