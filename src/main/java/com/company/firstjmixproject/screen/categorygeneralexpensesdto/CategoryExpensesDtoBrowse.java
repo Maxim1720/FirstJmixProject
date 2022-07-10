@@ -42,7 +42,10 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
 
     @Subscribe("categoryGeneralExpensesDtoesTable.generalExpenses")
     public void onCategoryGeneralExpensesDtoesTableGeneralExpenses(Action.ActionPerformedEvent event) {
-        setGeneralExpenses();
+        selectedCategoryExpensesDto.setStart(null);
+        selectedCategoryExpensesDto.setEnd(null);
+        selectedCategoryExpensesDto.setExpenses(expenseService.all(selectedCategoryExpensesDto.getCategory()));
+        setGeneralExpensesBtnsStyle();
     }
 
     @Subscribe
