@@ -17,13 +17,8 @@ public class OperationEventListener {
 
     @EventListener
     public void onOperationSaving(EntitySavingEvent<Operation> event) {
-
-        try {
+        if(dataManager.load(Operation.class).id(event.getEntity().getId()).optional().isEmpty()){
             operationExecutor.execute(event.getEntity());
         }
-        catch (FundsValueException e){
-            log.error(e.getMessage());
-        }
-
     }
 }
