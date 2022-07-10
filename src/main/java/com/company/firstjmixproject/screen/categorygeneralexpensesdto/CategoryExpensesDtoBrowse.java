@@ -1,17 +1,19 @@
 package com.company.firstjmixproject.screen.categorygeneralexpensesdto;
 
 import com.company.firstjmixproject.app.dto.CategoryExpensesByPeriodDto;
+import com.company.firstjmixproject.app.dto.CategoryExpensesDto;
 import com.company.firstjmixproject.app.service.category.CategoryExpenseService;
+import com.company.firstjmixproject.app.service.category.CategoryExpensesPeriodChecker;
 import com.company.firstjmixproject.entity.OperationCategory;
-import com.company.firstjmixproject.screen.categoryexpensesbyperioddto.CategoryExpensesByPeriodDtoEdit;
 import io.jmix.core.DataManager;
-import io.jmix.ui.Screens;
+import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.action.Action;
+import io.jmix.ui.component.Button;
 import io.jmix.ui.component.GroupTable;
 import io.jmix.ui.component.Table;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.screen.*;
-import com.company.firstjmixproject.app.dto.CategoryExpensesDto;
+import io.jmix.ui.theme.ThemeClassNames;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
