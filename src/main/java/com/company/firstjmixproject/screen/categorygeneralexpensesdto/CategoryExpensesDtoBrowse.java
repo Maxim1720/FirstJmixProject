@@ -55,10 +55,12 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
 
     private void setGeneralExpenses(){
         categoryGeneralExpensesDtoesDc.getMutableItems().clear();
-        List<OperationCategory> categories =
-                dataManager.load(OperationCategory.class).all().list();
-        categoryGeneralExpensesDtoesDc.getMutableItems().addAll(initedCategoryExpensesDtoes(categories));
-        categoryGeneralExpensesDtoesTable.sort(categoryGeneralExpensesDtoesTable.getColumns().get(0).getStringId(), Table.SortDirection.ASCENDING);
+        List<OperationCategory> categories = dataManager.load(OperationCategory.class).all().list();
+        categoryGeneralExpensesDtoesDc.getMutableItems()
+                .addAll(initedCategoryExpensesDtoes(categories));
+        categoryGeneralExpensesDtoesTable.
+                sort(categoryGeneralExpensesDtoesTable.getColumns().get(0).getStringId(),
+                        Table.SortDirection.ASCENDING);
     }
 
     private List<CategoryExpensesByPeriodDto> initedCategoryExpensesDtoes(List<OperationCategory> categories){
