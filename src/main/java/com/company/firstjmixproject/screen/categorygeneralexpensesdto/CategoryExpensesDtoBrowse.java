@@ -35,7 +35,10 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
     @Autowired
     private CategoryExpenseService expenseService;
     @Autowired
-    private GroupTable<CategoryExpensesDto> categoryGeneralExpensesDtoesTable;
+    private ScreenBuilders screenBuilders;
+    @Autowired
+    private CategoryExpensesPeriodChecker categoryExpensesPeriodChecker;
+    private CategoryExpensesByPeriodDto selectedCategoryExpensesDto;
 
     @Subscribe("categoryGeneralExpensesDtoesTable.generalExpenses")
     public void onCategoryGeneralExpensesDtoesTableGeneralExpenses(Action.ActionPerformedEvent event) {
