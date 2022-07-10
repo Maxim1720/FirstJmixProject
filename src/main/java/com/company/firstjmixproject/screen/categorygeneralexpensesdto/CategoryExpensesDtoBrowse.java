@@ -51,6 +51,30 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
         setGeneralExpenses();
+        setGeneralExpensesBtnsStyle();
+    }
+
+
+    @Subscribe("categoryGeneralExpensesDtoesTable")
+    public void onCategoryGeneralExpensesDtoesTableSelection(Table.SelectionEvent<CategoryExpensesByPeriodDto> event) {
+        Optional<CategoryExpensesByPeriodDto> optionalCategoryExpensesDto = event.getSelected().stream().findFirst();
+        optionalCategoryExpensesDto.ifPresent(
+                categoryExpensesDto -> {
+                    selectedCategoryExpensesDto = categoryExpensesDto;
+                    setBtnsStyleFromExpensesType(selectedCategoryExpensesDto);
+                }
+        );
+    }
+
+    @Subscribe("categoryGeneralExpensesDtoesTable.periodEdit")
+    public void onCategoryGeneralExpensesDtoesTablePeriodEdit(Action.ActionPerformedEvent event) {
+        screenBuilders.editor(categoryGeneralExpensesDtoesTable).build().show().addAfterCloseListener(
+                l->{
+                    if(l.closedWith(StandardOutcome.COMMIT)){
+                        setExpensesByPeriodBtnsStyle();
+                    }
+                }
+        );
     }
 
     private void setGeneralExpenses(){
