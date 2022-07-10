@@ -15,11 +15,11 @@ import java.math.BigDecimal;
 public class OperationEdit extends StandardEditor<Operation> {
 
     @Autowired
-    EntityStates entityStates;
+    private EntityStates entityStates;
     @Autowired
     private EntityPicker<Bill> billField;
     @Autowired
-    private ComboBox<OperationType> opTypeField;
+    private ComboBox<OperationType> typeField;
     @Autowired
     private TextField<BigDecimal> sumField;
 
