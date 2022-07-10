@@ -14,7 +14,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
@@ -35,9 +34,6 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     @Column(name = "USERNAME", nullable = false)
     protected String username;
-
-    @OneToMany(mappedBy = "owner")
-    private List<Bill> bill;
 
     @Secret
     @SystemLevel
@@ -63,11 +59,11 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
 
-    public List<Bill> getBill() {
+    public Bill getBill() {
         return bill;
     }
 
-    public void setBill(List<Bill> bill) {
+    public void setBill(Bill bill) {
         this.bill = bill;
     }
 
