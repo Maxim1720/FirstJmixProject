@@ -29,6 +29,7 @@ public class Bill {
     @Id
     private UUID id;
 
+    @NotEmpty(message = "{msg://com.company.firstjmixproject.entity/Bill.name.validation.NotEmpty}")
     @NotNull
     @InstanceName
     @Column(name = "NAME", nullable = false, length = 20)
