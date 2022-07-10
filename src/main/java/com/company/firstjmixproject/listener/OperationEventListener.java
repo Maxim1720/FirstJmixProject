@@ -14,7 +14,8 @@ public class OperationEventListener {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(OperationEventListener.class);
     @Autowired
     OperationExecutor operationExecutor;
-
+    @Autowired
+    private DataManager dataManager;
     @EventListener
     public void onOperationSaving(EntitySavingEvent<Operation> event) {
         if(dataManager.load(Operation.class).id(event.getEntity().getId()).optional().isEmpty()){
