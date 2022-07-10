@@ -6,8 +6,6 @@ import com.company.firstjmixproject.entity.Operation;
 import io.jmix.core.DataManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -20,7 +18,6 @@ public class OperationExecutor {
     @Autowired
     private FundsCalculator fundsCalculator;
     private BigDecimal funds;
-    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void execute(Operation operation){
         Bill bill = dataManager.load(Bill.class).id(operation.getBill().getId()).one();
         funds = bill.getFunds();
