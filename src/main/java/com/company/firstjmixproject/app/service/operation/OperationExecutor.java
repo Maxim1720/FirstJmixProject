@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-@Service("operationExecutor")
+
+@Service("idid_OperationExecutor")
 public class OperationExecutor {
     private final DataManager dataManager;
 
