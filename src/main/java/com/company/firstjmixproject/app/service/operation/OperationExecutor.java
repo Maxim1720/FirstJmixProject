@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 
 @Service("idid_OperationExecutor")
 public class OperationExecutor {
-    private final DataManager dataManager;
 
     @Autowired
     private DataManager dataManager;
