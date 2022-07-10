@@ -41,12 +41,7 @@
                             <action id="entityClear" type="entity_clear"/>
                         </actions>
                     </entityPicker>
-                    <entityPicker id="typeField" property="type">
-                        <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
-                        </actions>
-                    </entityPicker>
+                    <comboBox id="typeField" property="type"/>
                     <entityPicker id="categoryField" property="category">
                         <actions>
                             <action id="entityLookup" type="entity_lookup"/>
