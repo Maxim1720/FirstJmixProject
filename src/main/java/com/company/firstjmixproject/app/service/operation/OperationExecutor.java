@@ -18,13 +18,7 @@ public class OperationExecutor {
     @Autowired
     private FundsCalculator fundsCalculator;
     private BigDecimal funds;
-
-
-    @Autowired
-    public OperationExecutor(DataManager dataManager){
-        this.dataManager = dataManager;
-    }
-
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void execute(Operation operation){
         Bill bill = dataManager.load(Bill.class).id(operation.getBill().getId()).one();
         funds = bill.getFunds();
