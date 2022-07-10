@@ -22,7 +22,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "IDID_OPERATION", indexes = {
-        @Index(name = "IDX_OPERATION_BILL_ID", columnList = "BILL_ID"),
         @Index(name = "IDX_OPERATION_CATEGORY_ID", columnList = "CATEGORY_ID")
 })
 @Entity(name = "idid_Operation")
