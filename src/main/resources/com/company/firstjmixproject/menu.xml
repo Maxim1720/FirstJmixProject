@@ -4,15 +4,15 @@
     <menu id="application" caption="msg://com.company.firstjmixproject/menu.application" insertBefore="administration">
         <item screen="idid_User.browse" caption="msg://com.company.firstjmixproject.screen.user/UserBrowse.caption"/>
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
-        <item screen="idid_BillCurrency.browse"
-              caption="msg://com.company.firstjmixproject.screen.billcurrency/billCurrencyBrowse.menu"/>
         <item screen="idid_Bill.browse" caption="msg://com.company.firstjmixproject.screen.bill/billBrowse.menu"/>
-        <item screen="idid_OperationCategory.browse"
-              caption="msg://com.company.firstjmixproject.screen.operationcategory/operationCategoryBrowse.menu"/>
         <item screen="idid_Operation.browse"
               caption="msg://com.company.firstjmixproject.screen.operation/operationBrowse.menu"/>
-        <item screen="idid_CategoryGeneralExpensesDto.browse"
+        <item screen="idid_CategoryExpensesDto.browse"
               caption="msg://com.company.firstjmixproject.screen.categorygeneralexpensesdto/categoryGeneralExpensesDtoBrowse.menu"/>
+        <item screen="idid_BillCurrency.browse"
+              caption="msg://com.company.firstjmixproject.screen.billcurrency/billCurrencyBrowse.menu"/>
+        <item screen="idid_OperationCategory.browse"
+              caption="msg://com.company.firstjmixproject.screen.operationcategory/operationCategoryBrowse.menu"/>
     </menu>
 
 </menu-config>
