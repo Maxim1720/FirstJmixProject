@@ -1,6 +1,6 @@
 package com.company.firstjmixproject.app.service.operation;
 
-import com.company.firstjmixproject.app.exception.FundsValueException;
+import com.company.firstjmixproject.app.service.funds.FundsCalculator;
 import com.company.firstjmixproject.entity.Bill;
 import com.company.firstjmixproject.entity.Operation;
 import io.jmix.core.DataManager;
@@ -14,6 +14,10 @@ import java.math.BigDecimal;
 public class OperationExecutor {
     private final DataManager dataManager;
 
+    @Autowired
+    private DataManager dataManager;
+    @Autowired
+    private FundsCalculator fundsCalculator;
     private BigDecimal funds;
 
 
@@ -25,26 +29,12 @@ public class OperationExecutor {
     public void execute(Operation operation){
         Bill bill = operation.getBill();
         funds = bill.getFunds();
-        setBillFundsFromOpType(operation);
+        setFundsFromOpType(operation);
         bill.setFunds(funds);
         dataManager.save(bill);
     }
 
-    private void setBillFundsFromOpType(Operation operation){
-
-        switch (operation.getType()) {
-            case ENROLLMENT: {
-                funds = funds.add(operation.getSum());
-                break;
-            }
-            case WITHDRAWAL: {
-                funds = funds.subtract(operation.getSum());
-                break;
-            }
-        }
-
-        if(funds.doubleValue() < 0){
-            throw new FundsValueException();
-        }
+    private void setFundsFromOpType(Operation operation){
+        funds = fundsCalculator.calculate(operation,funds);
     }
 }
