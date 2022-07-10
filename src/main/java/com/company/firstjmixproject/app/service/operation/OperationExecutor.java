@@ -27,7 +27,7 @@ public class OperationExecutor {
     }
 
     public void execute(Operation operation){
-        Bill bill = operation.getBill();
+        Bill bill = dataManager.load(Bill.class).id(operation.getBill().getId()).one();
         funds = bill.getFunds();
         setFundsFromOpType(operation);
         bill.setFunds(funds);
