@@ -3,6 +3,7 @@ package com.company.firstjmixproject.listener;
 import com.company.firstjmixproject.app.exception.FundsValueException;
 import com.company.firstjmixproject.app.service.operation.OperationExecutor;
 import com.company.firstjmixproject.entity.Operation;
+import io.jmix.core.DataManager;
 import io.jmix.core.event.EntitySavingEvent;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
