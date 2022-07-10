@@ -5,6 +5,7 @@ import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.core.metamodel.annotation.JmixProperty;
 import org.springframework.data.annotation.CreatedBy;
@@ -14,6 +15,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
@@ -61,11 +63,11 @@ public class Operation {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @NotNull
+    @InstanceName
     @OnDeleteInverse(DeletePolicy.CASCADE)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "BILL_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.MERGE, optional = false)
+    @NotNull
     private Bill bill;
 
     @Column(name = "CANCELED", nullable = false, columnDefinition = "boolean default false")
