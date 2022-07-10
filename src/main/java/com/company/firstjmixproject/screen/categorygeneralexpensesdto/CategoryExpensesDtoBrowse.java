@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@UiController("idid_CategoryGeneralExpensesDto.browse")
-@UiDescriptor("category-general-expenses-dto-browse.xml")
+@UiController("idid_CategoryExpensesDto.browse")
+@UiDescriptor("category-expenses-dto-browse.xml")
 @LookupComponent("categoryGeneralExpensesDtoesTable")
 public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDto> {
     @Autowired
