@@ -1,8 +1,10 @@
 package com.company.firstjmixproject.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import org.springframework.data.annotation.CreatedBy;
@@ -11,16 +13,16 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
 @Table(name = "IDID_BILL", indexes = {
-        @Index(name = "IDX_BILL_CURRENCY_ID", columnList = "CURRENCY_ID")
+        @Index(name = "IDX_BILL_CURRENCY_ID", columnList = "CURRENCY_ID"),
+        @Index(name = "IDX_BILL_OWNER_ID", columnList = "OWNER_ID")
 })
 @Entity(name = "idid_Bill")
 public class Bill {
@@ -28,23 +30,6 @@ public class Bill {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
-
-    @NotEmpty(message = "{msg://com.company.firstjmixproject.entity/Bill.name.validation.NotEmpty}")
-    @NotNull
-    @InstanceName
-    @Column(name = "NAME", nullable = false, length = 20)
-    private String name;
-
-    @DecimalMin(message = "{msg://com.company.firstjmixproject.entity/Bill.funds.validation.DecimalMin}", value = "0")
-    @Positive
-    @NotNull
-    @Column(name = "FUNDS", nullable = false, precision = 19, scale = 2)
-    private BigDecimal funds = BigDecimal.valueOf(0);
-
-    @NotNull
-    @JoinColumn(name = "CURRENCY_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private BillCurrency currency;
 
     @Column(name = "VERSION", nullable = false)
     @Version
@@ -77,8 +62,26 @@ public class Bill {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @JoinColumn(name = "OWNER_ID", nullable = false)
+    @InstanceName
+    @Column(name = "NAME", nullable = false, length = 20)
+    @NotNull
+    private String name;
+
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JoinColumn(name = "CURRENCY_ID", nullable = false)
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private BillCurrency currency;
+
+    @PositiveOrZero(message = "{msg://com.company.firstjmixproject.entity/Bill.funds.validation.DecimalMin}")
+    @Column(name = "FUNDS", nullable = false, precision = 19, scale = 2
+            /*, columnDefinition = "big-decimal default 0"*/)
+    @NotNull
+    private BigDecimal funds = BigDecimal.ZERO;
+
+    @JoinColumn(name = "OWNER_ID", nullable = false)
+    @NotNull
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     private User owner;
 
     public User getOwner() {
@@ -87,14 +90,6 @@ public class Bill {
 
     public void setOwner(User owner) {
         this.owner = owner;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public BigDecimal getFunds() {
@@ -111,6 +106,14 @@ public class Bill {
 
     public void setCurrency(BillCurrency currency) {
         this.currency = currency;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getDeletedDate() {
