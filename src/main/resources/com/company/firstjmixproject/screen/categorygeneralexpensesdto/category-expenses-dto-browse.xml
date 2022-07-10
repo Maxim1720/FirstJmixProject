@@ -5,7 +5,7 @@
         focusComponent="categoryGeneralExpensesDtoesTable">
     <data readOnly="true">
         <collection id="categoryGeneralExpensesDtoesDc"
-                    class="com.company.firstjmixproject.app.dto.CategoryExpensesDto"/>
+                    class="com.company.firstjmixproject.app.dto.CategoryExpensesByPeriodDto"/>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
