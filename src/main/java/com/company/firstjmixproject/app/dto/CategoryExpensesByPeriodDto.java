@@ -18,12 +18,10 @@ public class CategoryExpensesByPeriodDto extends CategoryExpensesDto {
 
     @JmixProperty(mandatory = true)
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
     private Date start;
 
     @JmixProperty(mandatory = true)
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
     private Date end;
 
 
