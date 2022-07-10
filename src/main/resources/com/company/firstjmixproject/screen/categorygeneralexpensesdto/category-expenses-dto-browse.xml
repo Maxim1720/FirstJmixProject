@@ -33,6 +33,8 @@
             </actions>
             <columns>
                 <column id="category"/>
+                <column id="start"/>
+                <column id="end"/>
                 <column id="expenses"/>
             </columns>
             <simplePagination/>
