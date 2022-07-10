@@ -77,14 +77,13 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
         }
         return categoryExpensesDtos;
     }
-
-
-    @Subscribe("categoryGeneralExpensesDtoesTable")
-    public void onCategoryGeneralExpensesDtoesTableSelection(Table.SelectionEvent<CategoryExpensesDto> event) {
-        Optional<CategoryExpensesDto> optionalCategoryExpensesDto = event.getSelected().stream().findFirst();
-        optionalCategoryExpensesDto.ifPresent(
-                categoryExpensesDto -> selectedCategoryExpensesDto = categoryExpensesDto
-        );
+    private void setBtnsStyleFromExpensesType(CategoryExpensesByPeriodDto expensesDto){
+        if(categoryExpensesPeriodChecker.withPeriod(expensesDto)){
+            setExpensesByPeriodBtnsStyle();
+        }
+        else {
+            setGeneralExpensesBtnsStyle();
+        }
     }
     @Subscribe("categoryGeneralExpensesDtoesTable.periodEdit")
     public void onCategoryGeneralExpensesDtoesTablePeriodEdit(Action.ActionPerformedEvent event) {
