@@ -34,6 +34,5 @@ public class OperationEdit extends StandardEditor<Operation> {
         sumField.setEditable(editable);
     }
 
-    @Autowired
-    private InstanceContainer<Operation> operationDc;
+
 }
