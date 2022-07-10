@@ -23,7 +23,9 @@ import java.util.Optional;
 @LookupComponent("categoryGeneralExpensesDtoesTable")
 public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDto> {
     @Autowired
-    private CollectionContainer<CategoryExpensesDto> categoryGeneralExpensesDtoesDc;
+    private CollectionContainer<CategoryExpensesByPeriodDto> categoryGeneralExpensesDtoesDc;
+    @Autowired
+    private GroupTable<CategoryExpensesByPeriodDto> categoryGeneralExpensesDtoesTable;
     @Autowired
     DataManager dataManager;
     @Autowired
@@ -53,12 +55,14 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
         categoryGeneralExpensesDtoesTable.sort(categoryGeneralExpensesDtoesTable.getColumns().get(0).getStringId(), Table.SortDirection.ASCENDING);
     }
 
-    private List<CategoryExpensesDto> initedCategoryExpensesDtoes(List<OperationCategory> categories){
-        List<CategoryExpensesDto> categoryExpensesDtos = new ArrayList<>();
+    private List<CategoryExpensesByPeriodDto> initedCategoryExpensesDtoes(List<OperationCategory> categories){
+
+        List<CategoryExpensesByPeriodDto> categoryExpensesDtos = new ArrayList<>();
+
         for (OperationCategory category:
                 categories) {
-            CategoryExpensesDto generalExpensesDto =
-                    dataManager.create(CategoryExpensesDto.class);
+            CategoryExpensesByPeriodDto generalExpensesDto =
+                    dataManager.create(CategoryExpensesByPeriodDto.class);
             generalExpensesDto.setCategory(category);
             generalExpensesDto.setExpenses(expenseService.all(category));
             categoryExpensesDtos.add(generalExpensesDto);
