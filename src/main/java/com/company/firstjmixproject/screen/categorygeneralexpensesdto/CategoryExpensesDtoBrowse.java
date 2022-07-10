@@ -27,13 +27,13 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
     @Autowired
     private GroupTable<CategoryExpensesByPeriodDto> categoryGeneralExpensesDtoesTable;
     @Autowired
-    DataManager dataManager;
+    private Button expensesPeriodEditBtn;
     @Autowired
-    CategoryExpenseService expenseService;
+    private Button generalExpensesBtn;
     @Autowired
-    private Screens screens;
-    private CategoryExpensesByPeriodDtoEdit editScreen;
-    private CategoryExpensesDto selectedCategoryExpensesDto;
+    private DataManager dataManager;
+    @Autowired
+    private CategoryExpenseService expenseService;
     @Autowired
     private GroupTable<CategoryExpensesDto> categoryGeneralExpensesDtoesTable;
 
