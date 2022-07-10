@@ -85,22 +85,14 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
             setGeneralExpensesBtnsStyle();
         }
     }
-    @Subscribe("categoryGeneralExpensesDtoesTable.periodEdit")
-    public void onCategoryGeneralExpensesDtoesTablePeriodEdit(Action.ActionPerformedEvent event) {
 
-        CategoryExpensesByPeriodDto byPeriodDto = dataManager.create(CategoryExpensesByPeriodDto.class);
-        byPeriodDto.setCategory(selectedCategoryExpensesDto.getCategory());
-
-        editScreen = screens.create(CategoryExpensesByPeriodDtoEdit.class);
-        editScreen.setEntityToEdit(byPeriodDto);
-        editScreen.addAfterCloseListener(
-                listener -> setExpensesByPeriodInDataContainer(editScreen.getCategoryExpensesByPeriodDto())
-        );
-        editScreen.show();
+    private void setExpensesByPeriodBtnsStyle(){
+        expensesPeriodEditBtn.setStyleName(ThemeClassNames.BUTTON_PRIMARY);
+        generalExpensesBtn.setStyleName(ThemeClassNames.BUTTON_QUIET);
     }
-    private void setExpensesByPeriodInDataContainer(CategoryExpensesByPeriodDto expensesByPeriod){
-        selectedCategoryExpensesDto.setExpenses(expensesByPeriod.getExpenses());
-        categoryGeneralExpensesDtoesDc.replaceItem(selectedCategoryExpensesDto);
+    private void setGeneralExpensesBtnsStyle(){
+        generalExpensesBtn.setStyleName(ThemeClassNames.BUTTON_PRIMARY);
+        expensesPeriodEditBtn.setStyleName(ThemeClassNames.BUTTON_QUIET);
     }
     
 }
