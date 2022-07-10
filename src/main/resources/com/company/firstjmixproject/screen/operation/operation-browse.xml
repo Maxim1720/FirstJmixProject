@@ -45,6 +45,9 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="cancelOperation" caption="msg://cancelOperation.caption"
+                        icon="CANCEL"
+                        trackSelection="true"/>
             </actions>
             <columns>
                 <column id="bill"/>
@@ -59,7 +62,7 @@
                           alwaysVisible="true">
                 <button id="createBtn" action="operationsTable.create"/>
                 <button id="editBtn" action="operationsTable.edit"/>
-                <button id="removeBtn" action="operationsTable.remove"/>
+                <button id="cancelOperation" action="operationsTable.cancelOperation"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
