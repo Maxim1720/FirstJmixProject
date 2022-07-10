@@ -56,6 +56,9 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "TIME_ZONE_ID")
     protected String timeZoneId;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "owner")
+    private Bill bill;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
 
