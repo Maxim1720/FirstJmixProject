@@ -1,6 +1,7 @@
 package com.company.firstjmixproject.app.service.category;
 
 import com.company.firstjmixproject.app.dto.CategoryExpensesByPeriodDto;
+import com.company.firstjmixproject.app.dto.CategoryExpensesDto;
 import org.springframework.stereotype.Service;
 
 @Service("idid_CategoryExpensesPeriodChecker")
