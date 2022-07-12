@@ -39,7 +39,7 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
     @Autowired
     private ScreenBuilders screenBuilders;
     @Autowired
-    private CategoryExpensesPeriodChecker categoryExpensesPeriodChecker;
+    private CategoryExpensesTypeChecker categoryExpensesTypeChecker;
     private CategoryExpensesByPeriodDto selectedCategoryExpensesDto;
 
     @Subscribe("categoryGeneralExpensesDtoesTable.generalExpenses")
@@ -103,8 +103,8 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
         }
         return categoryExpensesDtos;
     }
-    private void setBtnsStyleFromExpensesType(CategoryExpensesByPeriodDto expensesDto){
-        if(categoryExpensesPeriodChecker.withPeriod(expensesDto)){
+    private void setBtnsStyleFromExpensesType(CategoryExpensesDto expensesDto){
+        if(categoryExpensesTypeChecker.withPeriod(expensesDto)){
             setExpensesByPeriodBtnsStyle();
         }
         else {
