@@ -44,7 +44,6 @@
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
                 <action id="cancelOperation" caption="msg://cancelOperation.caption"
                         icon="CANCEL"
                         trackSelection="true"/>
