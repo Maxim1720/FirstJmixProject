@@ -23,7 +23,7 @@ import java.util.Optional;
 @UiController("idid_CategoryExpensesDto.browse")
 @UiDescriptor("category-expenses-dto-browse.xml")
 @LookupComponent("categoryGeneralExpensesDtoesTable")
-public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDto> {
+public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesByPeriodDto> {
     @Autowired
     private CollectionContainer<CategoryExpensesByPeriodDto> categoryGeneralExpensesDtoesDc;
     @Autowired
