@@ -52,7 +52,7 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
-        setGeneralExpenses();
+        loadAllExpenses();
         setGeneralExpensesBtnsStyle();
     }
 
@@ -79,7 +79,7 @@ public class CategoryExpensesDtoBrowse extends StandardLookup<CategoryExpensesDt
         );
     }
 
-    private void setGeneralExpenses(){
+    private void loadAllExpenses(){
         categoryGeneralExpensesDtoesDc.getMutableItems().clear();
         List<OperationCategory> categories = dataManager.load(OperationCategory.class).all().list();
         categoryGeneralExpensesDtoesDc.getMutableItems()
