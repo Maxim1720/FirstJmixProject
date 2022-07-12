@@ -3,7 +3,7 @@ package com.company.firstjmixproject.screen.categorygeneralexpensesdto;
 import com.company.firstjmixproject.app.dto.CategoryExpensesByPeriodDto;
 import com.company.firstjmixproject.app.dto.CategoryExpensesDto;
 import com.company.firstjmixproject.app.service.category.CategoryExpenseService;
-import com.company.firstjmixproject.app.service.category.CategoryExpensesPeriodChecker;
+import com.company.firstjmixproject.app.service.category.CategoryExpensesTypeChecker;
 import com.company.firstjmixproject.entity.OperationCategory;
 import io.jmix.core.DataManager;
 import io.jmix.ui.ScreenBuilders;
