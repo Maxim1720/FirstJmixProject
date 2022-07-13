@@ -30,7 +30,9 @@ public class OperationCanceler {
         op.setComment(messages
                 .getMessage("com.company.firstjmixproject.entity/Operation.comment.rollback")
                 +" "
-                + DateFormat.getDateTimeInstance().format(new Date()));
+                + DateFormat.getDateTimeInstance()
+                        .format(rolledBackOperation.getCreatedDate()));
+
         op.setType(getCancelOpType(rolledBackOperation.getType()));
         op.setIsCanceled(true);
         return op;
