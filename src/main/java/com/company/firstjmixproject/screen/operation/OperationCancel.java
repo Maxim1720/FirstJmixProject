@@ -49,7 +49,7 @@ public class OperationCancel extends OperationEdit{
     }
 
     @Subscribe
-    public void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
+    public void onAfterCommitChanges(AfterCommitChangesEvent event) {
         rolledBackOperation.setIsCanceled(true);
         dataManager.save(rolledBackOperation);
     }
