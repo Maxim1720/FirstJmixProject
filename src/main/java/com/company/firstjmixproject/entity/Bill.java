@@ -74,8 +74,7 @@ public class Bill {
     private BillCurrency currency;
 
     @PositiveOrZero(message = "{msg://com.company.firstjmixproject.entity/Bill.funds.validation.DecimalMin}")
-    @Column(name = "FUNDS", nullable = false, precision = 19, scale = 2
-            /*, columnDefinition = "big-decimal default 0"*/)
+    @Column(name = "FUNDS", nullable = false, precision = 19, scale = 2)
     @NotNull
     private BigDecimal funds = BigDecimal.ZERO;
 
