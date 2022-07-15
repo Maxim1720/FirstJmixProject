@@ -31,7 +31,10 @@ public class OperationBrowse extends StandardLookup<Operation> {
         OperationCancel cancelScreen = screens.create(OperationCancel.class);
         cancelScreen.setEntityToEdit(selectedOperation);
         cancelScreen.show().addAfterCloseListener(
-                l-> operationsDl.load()
+                l-> {
+                    operationsDl.load();
+                    cancelOperation.setEnabled(false);
+                }
         );
     }
 
