@@ -4,6 +4,7 @@ import com.company.firstjmixproject.entity.Operation;
 import io.jmix.ui.Screens;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.Table;
+import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
@@ -18,6 +19,8 @@ public class OperationBrowse extends StandardLookup<Operation> {
     private Screens screens;
     @Autowired
     private Button cancelOperation;
+    @Autowired
+    private CollectionLoader<Operation> operationsDl;
 
     @Subscribe("cancelOperation")
     public void onCancelOperationClick(Button.ClickEvent event) {
@@ -27,7 +30,9 @@ public class OperationBrowse extends StandardLookup<Operation> {
     private void openCancelEditScreen(){
         OperationCancel cancelScreen = screens.create(OperationCancel.class);
         cancelScreen.setEntityToEdit(selectedOperation);
-        cancelScreen.show();
+        cancelScreen.show().addAfterCloseListener(
+                l-> operationsDl.load()
+        );
     }
 
     @Subscribe("operationsTable")
