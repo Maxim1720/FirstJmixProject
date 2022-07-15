@@ -23,8 +23,7 @@ public class FundsCalculator {
                 funds = funds.subtract(operation.getSum());
                 if(funds.doubleValue() < 0){
                     throw new FundsValueException(
-                            messages.getMessage(Bill.class,
-                                    Bill.class.getName()+"funds.validation.DecimalMin")
+                            messages.getMessage("com.company.firstjmixproject.entity/Bill.funds.validation.DecimalMin")
                     );
                 }
                 return funds;
